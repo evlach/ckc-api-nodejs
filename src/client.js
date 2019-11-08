@@ -1,14 +1,15 @@
 const {postRequest, authRequest} = require('./utils');
+const Logger = require('./logger');
 
 // Ignore invalid Certificates
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
-
-const URL_PLATFORM_INSTANCE = 'https://ckcsandbox.cisco.com/t/devnet.com/cdp/v1/capabilities/customer'
 
 const URLS = {
 	GET_CUSTOMER_CAPABILITIES : 'cdp/v1/capabilities/customer',
 	GET_DEVICES : 'cdp/v1/devices',
 };
+
+const logger = Logger.getLogger('API', process.env.CKC_API_LOG_LEVEL);
 
 class Client {
 	constructor(config) {
@@ -34,13 +35,13 @@ class Client {
 		};
 		try {
 			const response = await postRequest(loginUrl, postData);
-			console.info('Authenticated Successfully');
+			logger.info('Authenticated Successfully');
 			const client = new Client(config);
 			client.authData = response;
 			// this.userId = respose.
 			return client;
 		} catch (e) {
-			console.error(e);
+			logger.error(e);
 			throw e;
 		}
 	};

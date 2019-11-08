@@ -1,3 +1,4 @@
+const Logger = require('./logger');
 const request = require('request');
 
 const headers = {
@@ -44,5 +45,6 @@ const postRequest = async (url, form = {}, authData) => {
 
 module.exports = {
 	postRequest,
-	authRequest: _request
+	authRequest: _request,
+	Logger
 };

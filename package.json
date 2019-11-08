@@ -1,0 +1,32 @@
+{
+  "name": "ckc-api",
+  "version": "1.0.0",
+  "description": "Cisco Kinetic for Cities API in nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evlach/nodejs-scc-ckc-api-examples.git"
+  },
+  "keywords": [
+    "cisco",
+    "kinetic",
+    "api",
+    "rest",
+    "client",
+    "iot"
+  ],
+  "author": "evangelos.vlachogiannis@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evlach/nodejs-scc-ckc-api-examples/issues"
+  },
+  "homepage": "https://github.com/evlach/nodejs-scc-ckc-api-examples#readme",
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "inquirer": "^7.0.0",
+    "request": "^2.88.0"
+  }
+}
