@@ -1,4 +1,4 @@
 # nodejs-scc-ckc-api-examples
-Cisco Kinetic for Cities API Examples in nodejs
+Cisco Kinetic for Cities API and lab examples in nodejs
 
-https://github.com/CiscoDevNet/scc-ckc-api-examples in nodejs
+see https://github.com/CiscoDevNet/scc-ckc-api-examples
