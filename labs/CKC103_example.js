@@ -1,13 +1,12 @@
 const { getUserAnswers } = require("./utils");
 const CKC = require("../index");
-const CONFIG = require("./config");
 
 const askAuthData = async () => {
   const entries = {
-    client_secret: CONFIG.client_secret,
-    client_id: CONFIG.client_id,
-    username: CONFIG.username,
-    password: CONFIG.password
+    client_secret:'' || process.env.CKC_CLIENT_SECRET,
+    client_id:'' || process.env.CKC_CLIENT_ID,
+    username: '' || process.env.CKC_CLIENT_USERNAME,
+    password: '' || process.env.CKC_CLIENT_PASSWORD,
   };
   return getUserAnswers(entries);
 };

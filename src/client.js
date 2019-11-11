@@ -1,8 +1,16 @@
 const { postRequest, authRequest } = require("./utils");
 const Logger = require("./logger");
+require('dotenv').config();
 
 // Ignore invalid Certificates
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
+const DEF_CONFIG = {
+  client_secret:'' || process.env.CKC_CLIENT_SECRET,
+  client_id:'' || process.env.CKC_CLIENT_ID,
+  username: '' || process.env.CKC_CLIENT_USERNAME,
+  password: '' || process.env.CKC_CLIENT_PASSWORD,
+};
 
 const URLS = {
   GET_CUSTOMER_CAPABILITIES: "cdp/v1/capabilities/customer",
@@ -12,8 +20,9 @@ const URLS = {
 const logger = Logger.getLogger("API", process.env.CKC_API_LOG_LEVEL);
 
 class Client {
-  constructor(config) {
-    this.config = config;
+  constructor(config = {}) {
+    const conf = {...config, ...DEF_CONFIG};
+    this.config = conf;
     this.authData = null;
     this.loginUrl =
       config.loginUrl || "https://ckcsandbox.cisco.com/corev4/token";
@@ -25,10 +34,13 @@ class Client {
     return `${this.platformUrl}/${path}`;
   }
 
-  static async connect(config) {
+  static async connect(config = {}) {
+    const conf = {...config, ...DEF_CONFIG};
+    logger.debug(`Trying to connect with config: ${JSON.stringify(conf)}`);
+
     const loginUrl =
-      config.loginUrl || "https://ckcsandbox.cisco.com/corev4/token";
-    const { username, password, client_secret, client_id } = config;
+        conf.loginUrl || "https://ckcsandbox.cisco.com/corev4/token";
+    const { username, password, client_secret, client_id } = conf;
     const postData = {
       grant_type: "password",
       client_secret,
@@ -41,7 +53,6 @@ class Client {
       logger.info("Authenticated Successfully");
       const client = new Client(config);
       client.authData = response;
-      // this.userId = respose.
       return client;
     } catch (e) {
       logger.error(e);

@@ -4,7 +4,7 @@
   "description": "Cisco Kinetic for Cities API in nodejs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx mocha@6.2.2 test/*.js"
   },
   "repository": {
     "type": "git",
@@ -19,15 +19,22 @@
     "iot"
   ],
   "author": "evangelos.vlachogiannis@gmail.com",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/evlach/nodejs-scc-ckc-api-examples/issues"
   },
   "homepage": "https://github.com/evlach/nodejs-scc-ckc-api-examples#readme",
   "dependencies": {
     "bunyan": "^1.8.12",
+    "dotenv": "^8.2.0",
     "inquirer": "^7.0.0",
-    "prettier": "^1.18.2",
     "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.2",
+    "prettier": "^1.18.2"
+  },
+  "engines": {
+    "node": ">=12"
   }
 }
