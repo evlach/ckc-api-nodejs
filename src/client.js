@@ -21,7 +21,7 @@ const logger = Logger.getLogger("API", process.env.CKC_API_LOG_LEVEL);
 
 class Client {
   constructor(config = {}) {
-    const conf = {...config, ...DEF_CONFIG};
+    const conf = {...DEF_CONFIG, ...config };
     this.config = conf;
     this.authData = null;
     this.loginUrl =
