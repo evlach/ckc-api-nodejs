@@ -11,4 +11,6 @@ This is an implementation of Cisco Kinetic for Cities REST API : https://develop
 
 ## Cisco dev Labs (examples)
 
-https://github.com/CiscoDevNet/scc-ckc-api-examples
+https://developer.cisco.com/learning/lab/ckc101/step/1
+
+Inspired from official pythin one: https://github.com/CiscoDevNet/scc-ckc-api-examples
